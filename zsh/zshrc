@@ -1,0 +1,4 @@
+echo "initialising dotfiles"
+source settings.zsh
+source functions.zsh
+clear
