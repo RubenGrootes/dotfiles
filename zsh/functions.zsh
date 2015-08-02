@@ -1,3 +1,4 @@
+#Functions edit, vcs_super_info_wrapper and shell_icon:
 #Copyright (C) 2014-2015 Daniel Voogsgerd
 #Licensed under MIT license
 
@@ -20,4 +21,18 @@ function edit {
 		notify-send "No write permission. Opening using sudo"
 		sudoedit $FILE
     fi
+}
+
+function vcs_super_info_wrapper {
+	if [[ "$(stat -f -c %T .)" != 'cifs' ]]; then
+		vcs_super_info
+	fi
+}
+
+function shell_icon {
+	if [[ "$(stat -f -c %T .)" == 'cifs' ]]; then
+		echo "☁"
+	else
+		echo "$"
+	fi
 }

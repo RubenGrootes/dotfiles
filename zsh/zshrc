@@ -1,4 +1,13 @@
 echo "initialising dotfiles"
-source settings.zsh
-source functions.zsh
+export dotfilespath="$HOME/dotfiles"
+source "$dotfilespath/zsh/settings.zsh"
+source "$dotfilespath/zsh/functions.zsh"
+
+#Load configs
+for file in $dotfilespath/zsh/conf/*.zsh; do
+	echo "Loading config: ($file)"
+	[ -r "$file" ] && source "$file"
+done
+unset file
+
 clear
